@@ -1,0 +1,9 @@
+<header class="d-flex justify-content-center  py-3">
+    <ul class="nav nav-pills">
+      <li class="nav-item"><a href="/productos" class="nav-link <%= activeTab == 'Productos' ? 'active' : ''  %> ">Productos</a></li>
+      <li class="nav-item"><a href="/clientes" class="nav-link <%= activeTab == 'Clientes' ? 'active' : ''  %> ">Clientes</a></li>
+      <li class="nav-item"><a href="/pedidos" class="nav-link <%= activeTab == 'Pedidos' ? 'active' : ''  %> ">Pedidos</a></li>
+      <li class="nav-item"><a href="#" class="nav-link"> </a></li>
+      <li class="nav-item"><form action="/logout"><button class="btn btn-outline-danger" type="submit" id="btnSalir">Salir</button></form></li>
+    </ul>
+  </header>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+
+<!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del head -->
+<%- include('./partials/head.ejs',{titulo: 'PEDIDO' }) %>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+        la parte del encabezado -->
+        <%- include('./partials/nav.ejs',{activeTab: 'Pedidos' }) %>
+    </header>
+    <main class="flex-shrink-0">
+        <div class="container">
+            <div class="row mt-4 border-top">
+                <div class="col">
+                    <h4>Informe de Pedido N°<%= pedidoId %></h4>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <h6>Cliente: <%= detalle[0].clienteNombreCompleto %></h6>
+                </div>
+                <div class="col">
+                    <h6>Fecha: <%= detalle[0].pedidoFecha.toLocaleDateString('es-US',{year: 'numeric', month: 'numeric', day: 'numeric', hour:'2-digit',minute:'2-digit' }) %></h6>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <h6>Vendedor: <%= detalle[0].usuarioNombreCompleto %></h6>
+                </div>
+                <div class="col">
+                    <h6>Estado del pedido: <%= detalle[0].pedidoEstado %></h6>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <h6>Supervisor de Ventas: <%= detalle[0].usuarioSupervisor %></h6>
+                </div>
+                <div class="col">
+                    <h6>Fecha de Aprobación: <%= detalle[0].pedidoFechaAprobacion %></h6>
+                </div>
+            </div>
+            <div class="row mt-4 border-top">
+                <div class="col">
+                    <h4>Detalle del pedido</h4>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col" >Subtotal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Almacena en la tabla todos los detalles del pedido que se encuentren en la base de
+                            datos -->
+                            <% detalle.forEach(function(data,index) { %>
+                            <tr scope="row" id="fila-<%= data.detalleId %>">
+                                <th>
+                                    <%= data.productoNombre %></a>
+                                </th>
+                                <td>
+                                    <%= data.cantidad %>
+                                </td>
+                                <td>
+                                    <%= 'L. '+data.productoPrecio %>
+                                    </t>
+                                <td id="st-<%= index %>">
+                                    <%= data.subtotal %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                            <tr>
+                                <th>TOTAL</th>
+                                <th></th>
+                                <th></th>
+                                <th id="totalPedido"></th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col d-grid gap-2">
+                    <a href="/Pedidos" class="btn btn-outline-danger">Regresar</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del pie de página y scripts -->
+    <%- include('./partials/footer.ejs') %>
+    <script src="/js/vpedido.js"></script>
+</body>
+
+</html>

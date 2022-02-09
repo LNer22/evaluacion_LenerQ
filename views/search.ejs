@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+
+<!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del head -->
+<%- include('./partials/head.ejs',{titulo: 'Pedidos Aprobados' }) %>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+        la parte del encabezado -->
+        <%- include('./partials/nav.ejs',{activeTab: 'Pedidos' }) %>
+    </header>
+    <main class="flex-shrink-0">
+        <div class="container">
+            <form action="/aprobados" method="post">
+                <div class="row mt-4 border-top">
+                    <div class="col">
+                        <h4>Informe de Pedidos Aprobados</h4>
+                    </div>
+                </div>
+                <div class="row mt-4 border-top">
+                    <div class="col">
+                        <label for="fecha1" class="form-label">Fecha Inicial</label>
+                        <input type="datetime-local" name="fecha1" id="fecha1" class="form-control" required>
+                    </div>
+                    <div class="col">
+                        <label for="fecha2 class="form-label">Fecha Final</label>
+                        <input type="datetime-local" name="fecha2" id="fecha2" class="form-control" required>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col d-grid gap-2">
+                        <button class="btn btn-outline-primary" id="btn-search">Buscar</button>
+                    </div>
+                    <div class="col d-grid gap-2">
+                        <a href="/pedidos" class="btn btn-outline-danger">Regresar</a>
+                    </div>
+                </div>
+                <div class="row mt-4 border-top">
+                    <div class="col">
+                        <table>
+                            <thead>
+                                
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </main>
+    <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del pie de página y scripts -->
+    <%- include('./partials/footer.ejs') %>
+    <script src="/js/search.js"></script>
+</body>
+
+</html>

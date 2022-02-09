@@ -1,0 +1,58 @@
+<div class="row mt-3">
+    <div class="col">
+        <label for="DNI" class="form-label">Cliente</label>
+        <select class="form-select" id="DNI" aria-label="Default select example">
+            <!-- <option>Seleccione un cliente</option> -->
+            <% data.forEach(function(data) { %>
+            <option value="<%= data.DNI %>"><%= data.clienteNombre+' '+data.clienteApellidos %></option>
+            <% }); %>
+        </select>
+    </div>
+    <div class="col">
+        <label for="pedidoFecha" class="form-label">Fecha</label>
+        <input type="datetime-local" name="pedidoFecha" id="pedidoFecha" class="form-control" required
+            value="<%= typeof data.pedidoFecha != 'undefined' ? data.pedidoFecha:''  %>">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col">
+        <h3>Detalle</h3>
+        <div class="table-responsive">
+            <table class="table align-middle" id="dynamic_field">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cantidad</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id='row1'>
+                        <td>
+                            <select class="form-select" id="a-1" aria-label="Productos" required>
+                                <!-- <option>Seleccione un producto</option> -->
+                                <% productos.forEach(function(data) { %>
+                                <option value="<%= data.productoId %>">
+                                    <%= data.productoNombre+'  L.'+data.productoPrecio %>
+                                </option>
+                                <% }); %>
+                            </select>
+                        </td>
+                        <td><input type="number" id="b-1" class="form-control" required /></td>
+                        <td>
+                        <td><button type="button" id="add1" class="btn btn-success">+</button></td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col d-grid gap-2">
+        <button class="btn btn-outline-primary" type="submit">Guardar</button>
+    </div>
+    <div class="col d-grid gap-2">
+        <a href="/pedidos" class="btn btn-outline-danger">Regresar</a>
+    </div>
+</div>

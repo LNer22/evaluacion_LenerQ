@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" class="h-100">
+
+
+<!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del head -->
+<%- include('./partials/head.ejs',{titulo: 'PEDIDOS' }) %>
+
+<body class="d-flex flex-column h-100">
+    <header>
+        <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+        la parte del encabezado -->
+        <%- include('./partials/nav.ejs',{activeTab: 'Pedidos' }) %>
+    </header>
+    <main class="flex-shrink-0">
+        <div class="container">
+            <!-- Botón de agregar pedidos -->
+            <div class="row mt-4">
+                <div class="col">
+                    <a href="/pedido?accion=nuevo" class="btn btn-outline-success">Nuevo Pedido</a>
+                </div>
+                <div class="col">
+                    <a class="btn btn-outline-success" href="/search" >Pedidos Apobados</a>
+                </div>
+                <div class="col">
+                    <input id="bnpedido" onkeyup="myFunction('bnpedido','tbl-pedidos',0)" type="text"
+                        class="form-control" placeholder="🔎N° de Pedido">
+                </div>
+                <div class="col">
+                    <input id="bcliente" onkeyup="myFunction('bcliente','tbl-pedidos',1)" type="text"
+                        class="form-control" placeholder="🔎Cliente">
+                </div>
+                <div class="col">
+                    <input id="bfecha" onkeyup="myFunction('bfecha','tbl-pedidos',2)" type="text"
+                        class="form-control" placeholder="🔎Fecha">
+                </div>
+            </div>
+
+            <!-- Tabla que muestra todos los pedidos -->
+            <div class="table-responsive">
+                <table class="table table-hover align-middle" id="tbl-pedidos">
+                    <thead>
+                        <tr>
+                            <th scope="col">Código</th>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Almacena en la tabla todos los pedidos que se encuentren en la base de
+                        datos -->
+                        <% data.forEach(function(data) { %>
+                        <tr scope="row" id="fila-<%= data.pedidoId %>">
+                            <td>
+                                <%= data.pedidoId %></a>
+                            </td>
+                            <td>
+                                <%= data.cliente %>
+                            </td>
+                            <td>
+                                <%= data.pedidoFecha.toLocaleDateString('es-US',{year: 'numeric', month: 'numeric', day: 'numeric', hour:'2-digit',minute:'2-digit' }) %>
+                                </t>
+                            <td>
+                                <%= data.pedidoEstado %>
+                            </td>
+                            <td id="acciones">
+                                <a href="/pedido?accion=detalle&pedidoId=<%= data.pedidoId %>"
+                                    class="btn btn-outline-primary btn-sm"><i
+                                        class="fa-solid fa-magnifying-glass"></i></a>
+                                <a href="/pedido?accion=confirmar&pedidoId=<%= data.pedidoId %>"
+                                    style=<%=data.pedidoEstado=='REGISTRADO'?'display: inline-block':'display:none' %>
+                                    href='/pedido?accion=confirmar&pedidoId=<%= data.pedidoId %>'
+                                    class='btn btn-outline-success btn-sm hidden'><i class='fa-solid fa-check'></i></a>
+                                <a href="javascript:eliminarpedido(<%= data.pedidoId %>)"
+                                    class="btn btn-outline-danger btn-sm"><i class="fas fa-eraser"></i></a>
+                            </td>
+                        </tr>
+                        <% }); %>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+    <!-- Se incluye el documento parcial donde se almacena la codificacion de 
+    la parte del pie de página y scripts -->
+    <%- include('./partials/footer.ejs') %>
+    <script src="/js/pedido.js"></script>
+</body>
+
+</html>

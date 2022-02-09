@@ -1,0 +1,28 @@
+<div class="row mt-3">
+    <div class="col">
+        <label for="productoNombre" class="form-label">Nombre del producto</label>
+        <input type="text" name="productoNombre" id="productoNombre" class="form-control" required value="<%= typeof data.productoNombre != 'undefined' ? data.productoNombre:''  %>" <%= typeof data.productoNombre != 'undefined' ? 'readonly':''  %>>
+    </div>
+    <div class="col">
+        <label for="productoCantidad" class="form-label">Cantidad</label>
+        <input type="number" name="productoCantidad" id="productoCantidad" class="form-control" required value="<%= typeof data.productoCantidad != 'undefined' ? data.productoCantidad:''  %>">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col">
+        <label for="productoDescripcion" class="form-label">Descripción</label>
+        <input type="text" name="productoDescripcion" id="productoDescripcion" class="form-control" value="<%= typeof data.productoDescripcion != 'undefined' ? data.productoDescripcion:''  %>">
+    </div>
+    <div class="col-3">
+        <label for="productoPrecio" class="form-label">Precio</label>
+        <input type="number" name="productoPrecio" id="productoPrecio" class="form-control" required value="<%= typeof data.productoPrecio != 'undefined' ? data.productoPrecio:''  %>">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col d-grid gap-2">
+        <button class="btn btn-outline-primary" type="submit">Guardar</button>
+    </div>
+    <div class="col d-grid gap-2">
+        <a href="/productos" class="btn btn-outline-danger">Regresar</a>
+    </div>
+</div>

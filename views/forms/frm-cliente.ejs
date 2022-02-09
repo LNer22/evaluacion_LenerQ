@@ -1,0 +1,46 @@
+<div class="row mt-3">
+    <div class="col">
+        <label for="DNI" class="form-label">Número de Identidad</label>
+        <input type="number" name="DNI" id="DNI" class="form-control" required value="<%= typeof data.DNI != 'undefined' ? data.DNI:''  %>" <%= typeof data.DNI != 'undefined' ? 'readonly':''  %>>
+    </div>
+    <div class="col">
+        <label for="clienteNombre" class="form-label">Nombres</label>
+        <input type="text" name="clienteNombre" id="clienteNombre" class="form-control" required value="<%= typeof data.clienteNombre!= 'undefined' ? data.clienteNombre:''  %>">
+    </div>
+    <div class="col">
+        <label for="clienteApellidos" class="form-label">Apellidos</label>
+        <input type="text" name="clienteApellidos" id="clienteApellidos" class="form-control" required value="<%= typeof data.clienteApellidos != 'undefined' ? data.clienteApellidos:''  %>">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col">
+        <label for="clienteEmail" class="form-label">Correo Electrónico</label>
+        <input type="email" name="clienteEmail" id="clienteEmail" class="form-control"  value="<%= typeof data.clienteEmail != 'undefined' ? data.clienteEmail:''  %>">
+    </div>
+    <div class="col">
+        <label for="clienteDireccion" class="form-label">Dirección</label>
+        <input type="text" name="clienteDireccion" id="clienteDireccion" class="form-control"  value="<%= typeof data.clienteDireccion != 'undefined' ? data.clienteDireccion:''  %>">
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col">
+        <label for="clienteTelefono" class="form-label">Número de Teléfono</label>
+        <input type="number" name="clienteTelefono" id="clienteTelefono" class="form-control"  value="<%= typeof data.clienteTelefono != 'undefined' ? data.clienteTelefono:''  %>">
+    </div>
+    <div class="col">
+        <label for="clienteSexo" class="form-label">Sexo</label>
+        <select name="clienteSexo" id="clienteSexo" class="form-select">
+            <option value="" disabled>Seleccione un sexo</option>
+            <option value="0" <%= typeof data.clienteSexo != 'undefined' ? data.clienteSexo== 0 ? 'selected':'' :''  %> >Femenino</option>
+            <option value="1" <%= typeof data.clienteSexo != 'undefined' ? data.clienteSexo== 1 ? 'selected':'' :''  %>>Másculino</option>
+        </select>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col d-grid gap-2">
+        <button class="btn btn-outline-primary" type="submit">Guardar</button>
+    </div>
+    <div class="col d-grid gap-2">
+        <a href="/clientes" class="btn btn-outline-danger">Regresar</a>
+    </div>
+</div>
